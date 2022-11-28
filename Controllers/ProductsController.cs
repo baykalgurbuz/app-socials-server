@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
@@ -24,13 +25,22 @@ namespace ServerApp.Controllers
         public List<Product> GetProducts(){
             return _products;
         }
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id){
           var p=_products.FirstOrDefault(i=>i.ProductId==id);
           if(p==null){
             return NotFound();
           }
           return Ok(p);
+        }
+        [HttpPost]
+        public IActionResult CreateProduct(Product p)
+        {
+            _products.Add(p);
+            foreach(var item in _products){
+                Console.WriteLine(item.Name);
+            }
+            return Ok(p);
         }
     }
 }
