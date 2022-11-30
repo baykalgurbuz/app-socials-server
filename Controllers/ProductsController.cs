@@ -1,46 +1,98 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using ServerApp.Data;
+using ServerApp.DTO;
 using ServerApp.Models;
 
 namespace ServerApp.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ProductsController:ControllerBase
+    public class ProductsController : ControllerBase
     {
         private static List<Product> _products;
-        public ProductsController()
+        private readonly SocialContext _context;
+        public ProductsController(SocialContext context)
         {
-            _products=new List<Product>();
-            _products.Add(new Product(){ProductId=1,Name="Samsung s6",Price=3000,IsActive=false});
-            _products.Add(new Product(){ProductId=2,Name="Samsung s7",Price=2000,IsActive=true});
-            _products.Add(new Product(){ProductId=3,Name="Samsung s8",Price=5000,IsActive=true});
-            _products.Add(new Product(){ProductId=4,Name="Samsung s9",Price=6000,IsActive=false});
-            _products.Add(new Product(){ProductId=5,Name="Samsung s10",Price=7000,IsActive=true});
-            _products.Add(new Product(){ProductId=6,Name="Samsung s11",Price=3300,IsActive=false});
+            _context = context;
         }
         [HttpGet]
-        public List<Product> GetProducts(){
-            return _products;
+        public async Task<ActionResult> GetProducts()
+        {
+            var products = await _context
+            .Products
+            .Select(p => ProductToDTO(p)).ToListAsync();
+            return Ok(products);
         }
         [HttpGet("{id}")]
-        public IActionResult GetProduct(int id){
-          var p=_products.FirstOrDefault(i=>i.ProductId==id);
-          if(p==null){
-            return NotFound();
-          }
-          return Ok(p);
+        public async Task<IActionResult> GetProduct(int id)
+        {
+            var p = await _context
+            .Products
+            .FindAsync(id);
+            if (p == null)
+            {
+                return NotFound();
+            }
+            return Ok(ProductToDTO(p));
         }
         [HttpPost]
-        public IActionResult CreateProduct(Product p)
+        public async Task<IActionResult> CreateProduct(Product entity)
         {
-            _products.Add(p);
-            foreach(var item in _products){
-                Console.WriteLine(item.Name);
+            _context.Products.Add(entity);
+            await _context.SaveChangesAsync();
+            return CreatedAtAction(nameof(GetProduct), new { id = entity.ProductId }, ProductToDTO(entity));
+        }
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateProduct(int id, Product entity)
+        {
+            if (id != entity.ProductId)
+            {
+                return BadRequest();
             }
-            return Ok(p);
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            product.Name = entity.Name;
+            product.Price = entity.Price;
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception e)
+            {
+                return NotFound();
+
+            }
+            return NoContent();
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var product = await _context.Products.FindAsync(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+            _context.Products.Remove(product);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+        private static ProductDTO ProductToDTO(Product p)
+        {
+            return new ProductDTO()
+            {
+                ProductId = p.ProductId,
+                Name = p.Name,
+                Price = p.Price,
+                IsActive = p.IsActive
+            };
         }
     }
 }
