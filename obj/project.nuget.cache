@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "uU/a4YcZ2kvbH0q/0OBBBCMk3ZyqwnfhlWqUiMED5aZwgK6sQ6xhBmsunXewBD1NNlIy4JWPTNf/2H0Cg/qz9w==",
+  "dgSpecHash": "VeZtxJEtj2H7ZIVuHYAhbxViTUcIyBMGwFoNtH+n6UIpyfKymCQa1dts610JEKiFPlETO69Oyi8DmYCzbmS3lA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ebayk\\angular\\Socials\\ServerApp\\ServerApp.csproj",
+  "projectFilePath": "c:\\Users\\ebayk\\angular\\Socials\\ServerApp\\ServerApp.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ebayk\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.4\\microsoft.aspnetcore.jsonpatch.3.1.4.nupkg.sha512",
+    "C:\\Users\\ebayk\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.4\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.4.nupkg.sha512",
     "C:\\Users\\ebayk\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\ebayk\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\ebayk\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
@@ -28,6 +30,8 @@
     "C:\\Users\\ebayk\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\3.1.4\\microsoft.extensions.logging.abstractions.3.1.4.nupkg.sha512",
     "C:\\Users\\ebayk\\.nuget\\packages\\microsoft.extensions.options\\3.1.4\\microsoft.extensions.options.3.1.4.nupkg.sha512",
     "C:\\Users\\ebayk\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.4\\microsoft.extensions.primitives.3.1.4.nupkg.sha512",
+    "C:\\Users\\ebayk\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\ebayk\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\ebayk\\.nuget\\packages\\sqlitepclraw.bundle_e_sqlite3\\2.0.2\\sqlitepclraw.bundle_e_sqlite3.2.0.2.nupkg.sha512",
     "C:\\Users\\ebayk\\.nuget\\packages\\sqlitepclraw.core\\2.0.2\\sqlitepclraw.core.2.0.2.nupkg.sha512",
     "C:\\Users\\ebayk\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.2\\sqlitepclraw.lib.e_sqlite3.2.0.2.nupkg.sha512",

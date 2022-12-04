@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+
 using ServerApp.Data;
 
 namespace ServerApp
@@ -23,12 +24,26 @@ namespace ServerApp
         }
 
         public IConfiguration Configuration { get; }
-
+        readonly string MyAllowOrigins = "_myAllowOrigins";
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SocialContext>(x=>x.UseSqlite("Data Source=social.db"));
-            services.AddControllers();
+            services.AddDbContext<SocialContext>(x => x.UseSqlite("Data Source=social.db"));
+            services.AddControllers().AddNewtonsoftJson();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                    name: MyAllowOrigins,
+                    builder =>
+                    {
+                        builder
+                        .WithOrigins("http://localhost:4200")
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    }
+                );
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,9 +54,10 @@ namespace ServerApp
                 app.UseDeveloperExceptionPage();
             }
 
-           // app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors(MyAllowOrigins);
 
             app.UseAuthorization();
 
