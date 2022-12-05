@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "cu9WzQxUjpsdHOqai/Ak7pEFBl44YrlaMw8bUmn46TqJrU+8RWhVO+TMmjoswgU9iOAEVLnSXGMd6VcxG7/snw==",
+  "dgSpecHash": "mcadY8MeanDLosnf2LSt897Sfv6AhqsNccfiTorocwivesj9MBv3ol5A4ZNaddGce1nVTQrsEOpTCvFW8M69lg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ebayk\\angular\\Socials\\ServerApp\\ServerApp.csproj",
+  "projectFilePath": "c:\\Users\\ebayk\\angular\\Socials\\ServerApp\\ServerApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ebayk\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.4\\microsoft.aspnetcore.cryptography.internal.3.1.4.nupkg.sha512",
     "C:\\Users\\ebayk\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.4\\microsoft.aspnetcore.cryptography.keyderivation.3.1.4.nupkg.sha512",

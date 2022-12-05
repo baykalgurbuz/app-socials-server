@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ebayk\\angular\\Socials\\ServerApp\\ServerApp.csproj": {}
+    "c:\\Users\\ebayk\\angular\\Socials\\ServerApp\\ServerApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ebayk\\angular\\Socials\\ServerApp\\ServerApp.csproj": {
+    "c:\\Users\\ebayk\\angular\\Socials\\ServerApp\\ServerApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ebayk\\angular\\Socials\\ServerApp\\ServerApp.csproj",
+        "projectUniqueName": "c:\\Users\\ebayk\\angular\\Socials\\ServerApp\\ServerApp.csproj",
         "projectName": "ServerApp",
-        "projectPath": "C:\\Users\\ebayk\\angular\\Socials\\ServerApp\\ServerApp.csproj",
+        "projectPath": "c:\\Users\\ebayk\\angular\\Socials\\ServerApp\\ServerApp.csproj",
         "packagesPath": "C:\\Users\\ebayk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ebayk\\angular\\Socials\\ServerApp\\obj\\",
+        "outputPath": "c:\\Users\\ebayk\\angular\\Socials\\ServerApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ebayk\\AppData\\Roaming\\NuGet\\NuGet.Config",
