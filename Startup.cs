@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
 using ServerApp.Data;
+using ServerApp.Models;
 
 namespace ServerApp
 {
@@ -28,6 +30,22 @@ namespace ServerApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddIdentity<User,Role>().AddEntityFrameworkStores<SocialContext>();
+            services.Configure<IdentityOptions>(options=>{
+                options.Password.RequireDigit=true;
+                options.Password.RequireLowercase=true;
+                options.Password.RequireUppercase=true;
+                options.Password.RequireNonAlphanumeric=true;
+                options.Password.RequiredLength=6;
+
+                options.Lockout.DefaultLockoutTimeSpan=TimeSpan.FromMinutes(5);
+                options.Lockout.MaxFailedAccessAttempts=5;
+                options.Lockout.AllowedForNewUsers=true;
+
+                options.User.AllowedUserNameCharacters="abcdefghjklmnopqrstuvwxyzABCDEFGHLMNSOPRSTUVWXYZ-._@+";
+                options.User.RequireUniqueEmail=true;
+
+            });
             services.AddDbContext<SocialContext>(x => x.UseSqlite("Data Source=social.db"));
             services.AddControllers().AddNewtonsoftJson();
 
@@ -58,7 +76,7 @@ namespace ServerApp
 
             app.UseRouting();
             app.UseCors(MyAllowOrigins);
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
